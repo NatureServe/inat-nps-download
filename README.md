@@ -1,6 +1,25 @@
 # inat-nps-download
 R scripts to download species observations in iNaturalist occuring on National Park Service lands
 
+## important
+# the iNaturalize API is not intended for large downloads of data.  If you intend to download large amounts of data from iNaturalist, they prefer you use GBIF to do so.
+# https://www.inaturalist.org/pages/help#cite  from iNaturalist:
+
+https://www.inaturalist.org/pages/developers
+Datasets
+In addition to our export tool, these datasets might provide a better source of data than scraping our API.
+http://www.inaturalist.org/observations/gbif-observations-dwca.zip
+
+GBIF DarwinCore Archive: All the data we share with GBIF in DwC-A format, which is just a zip archive of CSV files. It contains records of all Research Grade observations published under a CC0, CC BY or CC BY-NC license, and links to their associated, licensed photos. It was 1.5 GB in September 2019. Updated weekly.
+
+How should I cite iNaturalist?
+
+Please cite a GBIF download! The easiest way for us to track research using iNaturalist is for you to download and cite a corresponding dataset from the Global Biodiversity Information Facility (GBIF). Once per week, research grade records on iNaturalist that are licensed for re-use are shared with GBIF. If you need additional records from iNaturalist that are not available from GBIF, you can also cite a dataset downloaded directly from iNaturalist. Citing a DOI for a GBIF dataset allows your publication to automatically be added to the count of citations on the iNaturalist Research-Grade Observations Dataset on GBIF.
+
+If you just want to cite iNaturalist (to refer to it generally, rather than a specific set of data), please use the following: iNaturalist. Available from https://www.inaturalist.org. Accessed [date].
+
+If you are writing up specific iNaturalist records that are not represented in GBIF, please include a link to the specific iNaturalist record(s). Such circumstances could be that you are describing a new species and therefore the records would not meet the criteria for inclusion in GBIF.
+
 consists of 6 separate scripts with purposes listed below.
 Also requires files to define scope of species to download and NPS target parks, also described below.
 The presence of required files is checked in the initial script.
