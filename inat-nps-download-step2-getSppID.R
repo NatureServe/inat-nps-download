@@ -40,12 +40,19 @@ cat('start species taxon ID pass #',pass.num,'\n')
 ## read in list of species
 spp <- read.csv("spp.csv")  
 
+
+## you can also use the USDA full list for spp which will mean you don't have to specify species you want R to look for
+#  at the analysis will take longer
+#  I recommend starting with a few species in spp and then copying the full list in or using the usda_exotic_status_x_SN.csv file like this:
+#  spp <- read.csv('usda_exotic_status_x_SN.csv') %>% select(SN) %>% rename(scientific.name=SN)
+# if you use the above, you should delete the old spp.ids.csv file if you've already created one
+
 ##check to see if this is done already:
 if (file.exists("spp.ids.csv")) {
   spp.with.id <- read.csv("spp.ids.csv")
-  spp <- spp.with.id
-    
+  spp <- spp.with.id  
 }
+
 
 ##get names on df  
 spp.names <- as.data.frame(names(spp))
