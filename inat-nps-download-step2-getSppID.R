@@ -163,8 +163,8 @@ if ( nrow(spp.need.id) > 0 ) {  ## get more IDs
       one.id <- getTaxonId(one.sci)
       ## end of error trapping
       } , error=function(e){
-                      cat("SLEEP 60 AFTER ERROR :",conditionMessage(e), "\n")
-                      Sys.sleep(60 )
+                      cat("SLEEP 10 AFTER ERROR :",conditionMessage(e), "\n")
+                      Sys.sleep(10 )  # long sleep not needed, 10 should do
                 })
 
 
