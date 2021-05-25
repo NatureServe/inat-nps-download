@@ -7,8 +7,9 @@ library(tidyr)
 ## merge datasets:
 ####################################
    
+#date to use on output
+output.date <- format(Sys.Date(), "%Y_%m") 
 
- 
 ##get list of species:
 
 spp.all <- read.csv("spp.ids.csv")
@@ -140,7 +141,7 @@ all.radii.std <- inner_join(all.radii.std.need.irank,spp.iRank.L48I,by="spp")
 
 ##create wider view and summary of parks
 one.park.name <- "ALL_PARKS"
-write.csv(all.radii.std,file=paste(one.park.name,"_radii_all_data.csv",sep=''),row.names = FALSE)
+write.csv(all.radii.std,file=paste(one.park.name,"_radii_all_data_",output.date, ".csv",sep=''),row.names = FALSE)
 
 ##reformat to this:
 ##				                                    observations within X mile buffer around park			
@@ -153,18 +154,18 @@ data.wider.pre <- all.radii.std %>%
 data.wider <- data.wider.pre %>% pivot_wider(names_from=radius_miles,values_from=buff)
 
 
-write.csv(data.wider,file=paste(one.park.name,"_radii_all_data_wider.csv",sep=""),row.names = FALSE)
+write.csv(data.wider,file=paste(one.park.name,"_radii_all_data_wider_",output.date, ".csv",sep=""),row.names = FALSE)
 
 #and summarise that by park
 ##names(data.wider)
 
 park.summ <- data.wider %>% group_by(park) %>% summarise(spp_park=sum(pts_park>0), pts_park_allspp=sum(pts_park), spp_buffer100=sum(`100`>0), pts_buffer100_allspp=sum(`100`), .groups='keep')
-write.csv(park.summ,file=paste(one.park.name,"_park_summary.csv",sep=""),row.names = FALSE)
+write.csv(park.summ,file=paste(one.park.name,"_park_summary_",output.date, ".csv",sep=""),row.names = FALSE)
 
 
 park.exotics <- all.radii.std  %>% filter(pts_park>0) %>% group_by(park) %>% arrange(park, desc(pts_park)) %>% select(park,spp,irank,pts_park) %>% unique() %>%
   rename(`scientific name`=spp, `iNaturalist occurrences within park`=pts_park,iRank=irank)
-write.csv(park.exotics,file="exotics_on_parks.csv", row.names=FALSE)
+write.csv(park.exotics,file="exotics_on_parks_",output.date, ".csv", row.names=FALSE)
 
 #watch list:
 watch.list<-  all.radii.std  %>% filter(pts_park==0, radius_miles==100) %>% group_by(park) %>% arrange(park,desc(pts_buffer_exclpark))  %>% 
@@ -182,9 +183,9 @@ watch.list.write <- watch.list.2 %>% select(-nOne,-nTot) %>% rename(`scientific 
        `iNaturalist occurrences within park`=pts_park, `buffer radius (miles)`=radius_miles, `iNaturalist occurrences within buffer outside park`=pts_buffer_exclpark, iRank=irank)
 
 
-
-
-write.csv(watch.list.write,file="park_watch_list.csv", row.names=FALSE)
+# next script needs this in expected location without output date, so including twice here
+write.csv(watch.list.write,file="park_watch_list.csv", row.names=FALSE) 
+write.csv(watch.list.write,file="park_watch_list_",output.date, ".csv", row.names=FALSE)
 
 
 ## as.data.frame(watch.list %>% summarise(nOcc=n())) %>% arrange(nOcc)
