@@ -165,7 +165,7 @@ write.csv(park.summ,file=paste(one.park.name,"_park_summary_",output.date, ".csv
 
 park.exotics <- all.radii.std  %>% filter(pts_park>0) %>% group_by(park) %>% arrange(park, desc(pts_park)) %>% select(park,spp,irank,pts_park) %>% unique() %>%
   rename(`scientific name`=spp, `iNaturalist occurrences within park`=pts_park,iRank=irank)
-write.csv(park.exotics,file="exotics_on_parks_",output.date, ".csv", row.names=FALSE)
+write.csv(park.exotics,file=paste("exotics_on_parks_",output.date, ".csv",sep=''), row.names=FALSE)
 
 #watch list:
 watch.list<-  all.radii.std  %>% filter(pts_park==0, radius_miles==100) %>% group_by(park) %>% arrange(park,desc(pts_buffer_exclpark))  %>% 
