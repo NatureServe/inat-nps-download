@@ -37,7 +37,7 @@ the "gis" subfolder contains shapefiles for determining which observations are o
   if making maps and you want county lines on the maps in script 6, this also needs to contain the county level maps shapefiles
     
 spp.csv
-  -- list of scientific names to lookup on NPS parks, **you can edit to add/remove/replace species to this list**
+  -- list of scientific names to lookup on NPS parks, **you can edit to add/remove/replace species in this list**
 
 target_NPS_parks.csv
   -- list of NPS parks, with additional information like projection to use for maps
@@ -113,4 +113,4 @@ inat-nps-download-step6-makemaps.R
     step 6 done creating maps.  Check "maps" subfolder to see if they were created correctly.  
 
 usda_exotic_status_x_SN.csv
-  -- file for defining plants as introduced/exotic from USDA Plants initially for lower 48 US states -  **you can edit to add/remove/replace species to this list**
+  -- file for defining plants as introduced/exotic from USDA Plants initially for lower 48 US states -  **you can edit to add/remove/replace species in this list**
