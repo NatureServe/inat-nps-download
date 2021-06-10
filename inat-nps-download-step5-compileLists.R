@@ -185,7 +185,7 @@ watch.list.write <- watch.list.2 %>% select(-nOne,-nTot) %>% rename(`scientific 
 
 # next script needs this in expected location without output date, so including twice here
 write.csv(watch.list.write,file="park_watch_list.csv", row.names=FALSE) 
-write.csv(watch.list.write,file="park_watch_list_",output.date, ".csv", row.names=FALSE)
+write.csv(watch.list.write,file=paste("park_watch_list_",output.date, ".csv",sep=''), row.names=FALSE)
 
 
 ## as.data.frame(watch.list %>% summarise(nOcc=n())) %>% arrange(nOcc)
