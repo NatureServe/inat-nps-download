@@ -2,7 +2,7 @@
 R scripts to download species observations in iNaturalist occuring on National Park Service lands
 
 ## important
-# the iNaturalize API is not intended for large downloads of data.  If you intend to download large amounts of data from iNaturalist, they prefer you use GBIF to do so.
+# the iNaturalist API is not intended for large downloads of data.  If you intend to download large amounts of data from iNaturalist, they prefer you use GBIF to do so.
 # https://www.inaturalist.org/pages/help#cite  from iNaturalist:
 
 https://www.inaturalist.org/pages/developers
